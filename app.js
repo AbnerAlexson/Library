@@ -7,6 +7,21 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
+function renderBooks() {
+    let renderLibrary = document.querySelector('.library')
+    for (let i = 0; i <= myLibrary.length; i++) {
+       let eachBook = document.createElement("div");
+       eachBook.setAttribute('class', 'book')
+       eachBook.innerHTML = `
+       <h2 class="bookTitle">${myLibrary[i].title}</h2>
+       <p class="bookAuthor">${myLibrary[i].author}</p>
+       <p class="bookPages">Pages:${myLibrary[i].pages}</p>
+       <button class="btnRead">read</button>
+       `;
+        renderLibrary.appendChild(eachBook);
+    };
+};
+
 function addBookToLibrary() {
     let title = document.getElementById('title').value;
     let author = document.getElementById('author').value;
@@ -35,4 +50,5 @@ let submitNewBook = document.querySelector('.submitBtn > input');
 submitNewBook.addEventListener("click", (event) => {
     event.preventDefault();
     addBookToLibrary();
+    renderBooks();
 })
