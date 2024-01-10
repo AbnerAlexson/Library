@@ -1,5 +1,6 @@
-*{
+:root{
     font-family: 'Ubuntu', sans-serif;
+    box-sizing: border-box;
 }
 
 body {
@@ -26,15 +27,16 @@ body {
    background: #06b6d4; 
 }
 
-#popup-container {
-    display: none;
+#popup-container-inactive {
+    display: block;
     background: #6b7280;
     height:  60vh;
-    width: 40vw;
-    position: relative;
+    width: clamp(200px, 40vw, 400px);
+    border-radius: 20px;
+    position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, 20%);
+    transform: translate(-50%, -100%); /* change translate(-50%, 20%) */
     transition: transform 0.2s ease-in;
     display: flex;
     flex-direction: column;
@@ -42,8 +44,121 @@ body {
     align-items: center;
 }
 
+#popup-container-active {
+    display: block;
+    background: #6b7280;
+    height:  60vh;
+    width: clamp(200px, 40vw, 400px);
+    border-radius: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 20%); /* change translate(-50%, -100%) */
+    transition: transform 0.2s ease-in;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#popup-container-active > h2 {
+    position: relative;
+    top: -15%;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #fff;
+}
+
+.close-btn {
+    height: 5%;
+    width: 5%;
+    color: #fff;
+    position: relative;
+    top: -15%;
+    left: 48%;
+    display: flex;
+    justify-content: center;
+}
+
+.close.btn:hover {
+    cursor: pointer;
+}
+
 /* #new-book-btn:hover ~ #popup-container {
     top: 50%;
     left: 50%;
     transform: translate(-50%, 20%);
 } */
+
+.new-book-form {
+    width: 100%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items:flex-start
+}
+
+.text-input {
+    width: 100%;
+    font-size: 1.2rem;
+    color: #fff; 
+    display: flex;
+    justify-content: center;
+}
+
+.text-input label {
+    width: 20%;
+}
+
+.text-input input {
+    width: 70%;
+    border: 0;
+    border-radius: 7px;
+    background: #cbd5e1;
+}
+
+.check-input {
+    width: 95%;
+    padding-left: 15px;
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.submitBtn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 30px;
+}
+
+.submitBtn input {
+    background: #fff;
+    border: 0;
+    border-radius: 7px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 600;
+}
+
+.submitBtn input:hover {
+    background: #38bdf8;
+}
+
+.library {
+    border: 1px solid black;
+    height: 70vh;
+}
+
+ /* media queries */
+@media screen and (max-width: 790px) {
+    .close-btn {
+        top: -15%;
+        left: 48%;
+    }
+
+    #popup-container > h2 {
+        top: -15%;
+    }
+}
+
+
